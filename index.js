@@ -6,7 +6,7 @@ function createContentElement(contentDescription,contentDate)
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         let l = document.createElement("label");
-        l.innerHTML = "Target Date" + " " + contentDate;
+        l.innerHTML = contentDescription + "(Target Date" + " " + contentDate + ")";
         contentElement.appendChild(checkbox);
         contentElement.appendChild(l);
         return contentElement;
@@ -28,13 +28,32 @@ function displayContents(contentDescription,contentDate)
         }
     }
 
-content1Description = "This is Task 1";
-content1Date = "2023-07-04"
+const textInput = document.getElementById("taskInput");
+const button = document.getElementById("addButton");
+const dateInput = document.getElementById("deadlineInput");
+const del_button = document.getElementById("deleteButton");
+const str_button = document.getElementById("strikeButton");
 
-content2Description = "This is Task 2";
-content2Date = "2023-07-12"
+button.addEventListener("click", () => {
+    const CD = textInput.value;
+    const D = dateInput.value;
+    displayContents(CD,D);
+});
 
-content3Description = "This is Task 3";
-content3Date = "2024-01-01"
+del_button.addEventListener("click", () => {             
+    let h = document.getElementById("highPriorityContainer");         
+    let l = document.getElementById("lowPriorityContainer");             
+    h.innerHTML = "";
+    l.innerHTML = "";
+});
 
-displayContents(content1Description,content1Date);
+str_button.addEventListener("click", () => {             
+    let h = document.getElementById("highPriorityContainer");         
+    let l = document.getElementById("lowPriorityContainer");             
+    h.style.textDecoration = "line-through";
+    l.style.textDecoration = "line-through";
+});
+
+
+
+
